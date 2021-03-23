@@ -1,0 +1,18 @@
+<table #dataTable [dataSource]="dataArray" mat-table>
+  <mat-text-column name="modelID"></mat-text-column>
+  <mat-text-column name="version"></mat-text-column>
+  <ng-container matColumnDef="date">
+    <th *matHeaderCellDef mat-header-cell> Date</th>
+    <td *matCellDef="let model" mat-cell> {{model.date | date:'short'}} </td>
+  </ng-container>
+  <ng-container matColumnDef="status">
+    <th *matHeaderCellDef mat-header-cell> Status</th>
+    <td *matCellDef="let model" mat-cell>
+      <mat-icon [color]="model.status === 'fail' ? 'error' : 'accent'">{{ statusIcon(model.status) }}</mat-icon>
+    </td>
+  </ng-container>
+
+  <tr *matHeaderRowDef="columnsToRender(isMobile$ | async)" mat-header-row></tr>
+  <tr *matRowDef="let myRowData; columns: columnsToRender(isMobile$ | async)" mat-row></tr>
+
+</table>

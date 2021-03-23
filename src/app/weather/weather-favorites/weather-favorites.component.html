@@ -1,0 +1,13 @@
+<mat-toolbar>
+  <div *ngFor="let favorite of (favorites$ | async); index as i;" class="fav">
+    <button [queryParams]="{fav: i - 1}" mat-button routerLink="/weather">
+          <span class="forecast">
+          {{ favorite.forecast + ' &deg;' + favorite.forecastUnit }}
+        </span>
+      <span class="location">
+          {{ favorite.location }}
+        </span>
+    </button>
+  </div>
+</mat-toolbar>
+

@@ -1,0 +1,43 @@
+<mat-toolbar color="primary">
+  <button (click)="sidenav.toggle()" class="sidenav-toggler" mat-icon-button>
+    <mat-icon>{{ sideNavOpen ? 'menu_open' : 'menu' }}</mat-icon>
+  </button>
+  <span>TotalDash</span>
+  <span class="spacer"></span>
+  <!--
+  <span class="weather"><ng-container *ngIf="!(isMobile$ | async)">{{location}}</ng-container>{{temperature}}</span>
+  -->
+</mat-toolbar>
+
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav (closed)="sideNavOpen = false" (opened)="sideNavOpen = true"
+               [fixedInViewport]="isMobile$ | async" [fixedTopGap]="(isMobile$ | async) ? 0 : 56"
+               [mode]="(isMobile$ | async) ? 'over' : 'side'" [opened]="!(isMobile$ | async)">
+
+    <mat-nav-list>
+      <a *ngFor="let navItem of navItems" [href]="navItem.url" mat-list-item routerLinkActive="link-active">
+        <mat-icon color="accent" matListIcon>{{ navItem.icon }}</mat-icon>
+        {{ navItem.text }}
+      </a>
+    </mat-nav-list>
+
+    <span class="spacer"></span>
+
+    <mat-nav-list>
+      <a *ngFor="let navItem of bottomNavItems" [routerLink]="navItem.url" mat-list-item
+         routerLinkActive="link-active">
+        <mat-icon color="accent" matListIcon>{{ navItem.icon }}</mat-icon>
+        {{ navItem.text }}
+      </a>
+    </mat-nav-list>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<footer>
+  CREDITS
+  <a href="https://www.freepik.com/vectors/winter">Winter vector created by zaie - www.freepik.com</a>
+</footer>

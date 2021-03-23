@@ -1,0 +1,33 @@
+.forecast-content {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 8px;
+}
+
+.forecast-content > * {
+  margin: 8px;
+}
+
+.forecast {
+  flex: 4 0 350px;
+}
+
+.extra-info {
+  flex: 1 0 150px;
+}
+
+.extra-info > *:nth-child(2) {
+  margin-top: 8px;
+}
+
+.wind {
+  flex: 1 0 150px;
+}
+
+.next-forecast {
+  flex: 1 0 150px;
+}
+
+.extended-forecast {
+  flex: 2 0 250px;
+}

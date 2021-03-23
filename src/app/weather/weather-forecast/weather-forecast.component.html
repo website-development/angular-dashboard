@@ -1,0 +1,19 @@
+<div class="content">
+  <div *ngIf="!compact" class="weather-logo">
+    <ng-content select="visual"></ng-content>
+  </div>
+  <div *ngIf="title" class="location">
+    {{ title }}
+  </div>
+  <div class="temperature">
+    <ng-content select="indicator"></ng-content>
+  </div>
+  <div *ngIf="subtitle" class="short-description">
+    {{ subtitle }}
+  </div>
+
+  <div *ngIf="details" class="full-description">
+    {{ details }}
+  </div>
+
+</div>
